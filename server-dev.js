@@ -19,9 +19,9 @@ const server = async () => {
 
     try {
       const template = await vite.transformIndexHtml(url, fs.readFileSync('index.html', 'utf-8'));
-      const app = (await vite.ssrLoadModule('/src/entry-server.jsx')).render;
+      const { render } = await vite.ssrLoadModule('/src/entry-server.jsx');
 
-      const html = template.replace(`<!--ssr-outlet-->`, app);
+      const html = template.replace(`<!--ssr-outlet-->`, render);
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (error) {
       res.status(500).end(error);
