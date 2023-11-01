@@ -2,7 +2,6 @@
   "name": "simple-react-ssr-vite-express",
   "version": "1.0.0",
   "description": "Simple React SSR with Vite and Express",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "node server-dev.js",
