@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server';
 
-import Page from './page';
+import App from './app';
 
 export const render = () => {
-  return renderToString(<Page />);
+  return renderToString(<App />);
 };

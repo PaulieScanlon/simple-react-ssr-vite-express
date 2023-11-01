@@ -1,4 +1,4 @@
-const Page = () => {
+const App = () => {
   return (
     <main>
       <h1>Index</h1>
@@ -7,4 +7,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default App;
