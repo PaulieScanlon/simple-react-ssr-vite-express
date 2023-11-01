@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "Simple React SSR with Vite and Express",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "node dev-sever",
+    "dev": "node dev-server.js",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
+    "build": "npm run build:client && npm run build:server",
+    "serve": "node prod-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,8 +18,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.18.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.1.0",

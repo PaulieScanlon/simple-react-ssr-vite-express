@@ -1,9 +1,8 @@
-import React from 'react';
-
 const Page = () => {
   return (
     <main>
-      <h1>Page</h1>
+      <h1>Index</h1>
+      <p>Lorem Ipsum</p>
     </main>
   );
 };
