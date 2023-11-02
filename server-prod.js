@@ -4,9 +4,8 @@ import { fileURLToPath } from 'url';
 import express from 'express';
 
 const app = express();
-const client = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'dist/client');
 
-app.use(express.static(client, { index: false }));
+app.use(express.static(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'dist/client'), { index: false }));
 
 app.use('*', async (_, res) => {
   try {
