@@ -11,25 +11,21 @@ const vite = await createServer({
   appType: 'custom',
 });
 
-const server = async () => {
-  app.use(vite.middlewares);
+app.use(vite.middlewares);
 
-  app.use('*', async (req, res) => {
-    const url = req.originalUrl;
+app.use('*', async (req, res) => {
+  const url = req.originalUrl;
 
-    try {
-      const template = await vite.transformIndexHtml(url, fs.readFileSync('index.html', 'utf-8'));
-      const { render } = await vite.ssrLoadModule('/src/entry-server.jsx');
+  try {
+    const template = await vite.transformIndexHtml(url, fs.readFileSync('index.html', 'utf-8'));
+    const { render } = await vite.ssrLoadModule('/src/entry-server.jsx');
 
-      const html = template.replace(`<!--ssr-outlet-->`, render);
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
-    } catch (error) {
-      res.status(500).end(error);
-    }
-  });
-};
-
-server();
+    const html = template.replace(`<!--ssr-outlet-->`, render);
+    res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+  } catch (error) {
+    res.status(500).end(error);
+  }
+});
 
 app.listen(4173, () => {
   console.log('http://localhost:4173.');
