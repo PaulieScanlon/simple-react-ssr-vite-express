@@ -7,7 +7,8 @@
     "dev": "node server-dev.js",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
-    "build": "npm run build:client && npm run build:server",
+    "build:function": "vite build --ssr src/function.js --outDir dist/function",
+    "build": "npm run build:client && npm run build:server && npm run build:function",
     "serve": "node server-prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
